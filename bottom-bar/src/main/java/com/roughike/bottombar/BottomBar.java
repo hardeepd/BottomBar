@@ -934,7 +934,10 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
         } else {
             int tabCount = getTabCount();
             for (int i = 0; i < tabCount; i++) {
-                getTabAtPosition(i).deselect(true);
+                BottomBarTab tab = getTabAtPosition(i);
+                if (tab.isActive()) {
+                    tab.deselect(true);
+                }
             }
 
             newTab.select(true);
