@@ -53,6 +53,7 @@ public class BottomBarTab extends LinearLayout {
 
     private Type type = Type.FIXED;
     private boolean isTitleless;
+    private boolean noTinting;
     private int iconResId;
     private String title;
     private float inActiveAlpha;
@@ -92,7 +93,7 @@ public class BottomBarTab extends LinearLayout {
     void prepareLayout() {
         inflate(getContext(), getLayoutResource(), this);
         setOrientation(VERTICAL);
-        setGravity(isTitleless? Gravity.CENTER : Gravity.CENTER_HORIZONTAL);
+        setGravity(isTitleless ? Gravity.CENTER : Gravity.CENTER_HORIZONTAL);
         setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         setBackgroundResource(MiscUtils.getDrawableRes(getContext(), R.attr.selectableItemBackgroundBorderless));
 
@@ -181,6 +182,10 @@ public class BottomBarTab extends LinearLayout {
         }
 
         this.isTitleless = isTitleless;
+    }
+
+    public void setNoTinting(boolean noTinting) {
+        this.noTinting = noTinting;
     }
 
     public ViewGroup getOuterView() {
@@ -447,7 +452,10 @@ public class BottomBarTab extends LinearLayout {
 
     private void setColors(int color) {
         if (iconView != null) {
-            iconView.setColorFilter(color);
+            if (!noTinting) {
+                iconView.setColorFilter(color);
+            }
+
             iconView.setTag(R.id.bb_bottom_bar_color_id, color);
         }
 

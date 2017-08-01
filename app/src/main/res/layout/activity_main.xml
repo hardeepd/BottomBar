@@ -49,4 +49,10 @@
         android:layout_height="wrap_content"
         android:text="Using Badges" />
 
+    <Button
+        android:id="@+id/large_icon_non_responsive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large Icon Non Responsive" />
+
 </LinearLayout>

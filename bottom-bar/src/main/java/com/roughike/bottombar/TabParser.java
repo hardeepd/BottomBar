@@ -28,20 +28,21 @@ import static com.roughike.bottombar.TabParser.TabAttribute.ICON;
 import static com.roughike.bottombar.TabParser.TabAttribute.ID;
 import static com.roughike.bottombar.TabParser.TabAttribute.INACTIVE_COLOR;
 import static com.roughike.bottombar.TabParser.TabAttribute.IS_TITLELESS;
+import static com.roughike.bottombar.TabParser.TabAttribute.NO_TINTING;
 import static com.roughike.bottombar.TabParser.TabAttribute.TITLE;
 
 /**
  * Created by iiro on 21.7.2016.
- *
+ * <p>
  * BottomBar library for Android
  * Copyright (c) 2016 Iiro Krankka (http://github.com/roughike).
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -142,6 +143,10 @@ class TabParser {
                     boolean isTitleless = parser.getAttributeBooleanValue(i, false);
                     workingTab.setIsTitleless(isTitleless);
                     break;
+                case NO_TINTING:
+                    boolean noTinting = parser.getAttributeBooleanValue(i, false);
+                    workingTab.setNoTinting(noTinting);
+                    break;
             }
         }
 
@@ -189,7 +194,8 @@ class TabParser {
             BAR_COLOR_WHEN_SELECTED,
             BADGE_BACKGROUND_COLOR,
             BADGE_HIDES_WHEN_ACTIVE,
-            IS_TITLELESS
+            IS_TITLELESS,
+            NO_TINTING
     })
     @interface TabAttribute {
         String ID = "id";
@@ -201,6 +207,7 @@ class TabParser {
         String BADGE_BACKGROUND_COLOR = "badgeBackgroundColor";
         String BADGE_HIDES_WHEN_ACTIVE = "badgeHidesWhenActive";
         String IS_TITLELESS = "iconOnly";
+        String NO_TINTING = "noTinting";
     }
 
     @SuppressWarnings("WeakerAccess")
