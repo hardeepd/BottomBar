@@ -9,19 +9,21 @@
         id="@+id/tab_nearby"
         title="Nearby" />
     <tab
+        activeColor="@color/colorAccent"
         fullSizeIcon="true"
         icon="@drawable/ic_add_circle_black_24dp"
         iconOnly="true"
         id="@+id/tab_add"
-        noTinting="true" />
+        inActiveColor="@color/colorAccent" />
     <tab
         icon="@drawable/ic_recents"
         id="@+id/tab_recents"
         title="Friends" />
     <tab
+        activeColor="@color/colorAccent"
         fullSizeIcon="true"
         icon="@drawable/ic_more_vert_black_24dp"
         iconOnly="true"
         id="@+id/tab_menu"
-        noTinting="true" />
+        inActiveColor="@color/colorAccent" />
 </tabs>

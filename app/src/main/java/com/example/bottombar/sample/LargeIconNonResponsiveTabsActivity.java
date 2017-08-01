@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.ConsumeFocusInterceptor;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -36,6 +37,13 @@ public class LargeIconNonResponsiveTabsActivity extends Activity {
             @Override
             public void onTabReSelected(@IdRes int tabId) {
                 Toast.makeText(getApplicationContext(), TabMessage.get(tabId, true), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        bottomBar.setConsumeFocusInterceptor(new ConsumeFocusInterceptor() {
+            @Override
+            public boolean shouldConsumeFocus(@IdRes int newTabId) {
+                return newTabId == R.id.tab_add;
             }
         });
     }
