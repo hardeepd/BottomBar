@@ -24,6 +24,7 @@ import static com.roughike.bottombar.TabParser.TabAttribute.ACTIVE_COLOR;
 import static com.roughike.bottombar.TabParser.TabAttribute.BADGE_BACKGROUND_COLOR;
 import static com.roughike.bottombar.TabParser.TabAttribute.BADGE_HIDES_WHEN_ACTIVE;
 import static com.roughike.bottombar.TabParser.TabAttribute.BAR_COLOR_WHEN_SELECTED;
+import static com.roughike.bottombar.TabParser.TabAttribute.FULL_SIZE_ICON;
 import static com.roughike.bottombar.TabParser.TabAttribute.ICON;
 import static com.roughike.bottombar.TabParser.TabAttribute.ID;
 import static com.roughike.bottombar.TabParser.TabAttribute.INACTIVE_COLOR;
@@ -144,8 +145,12 @@ class TabParser {
                     workingTab.setIsTitleless(isTitleless);
                     break;
                 case NO_TINTING:
-                    boolean noTinting = parser.getAttributeBooleanValue(i, false);
-                    workingTab.setNoTinting(noTinting);
+                    boolean hasTinting = parser.getAttributeBooleanValue(i, false);
+                    workingTab.setNoTinting(hasTinting);
+                    break;
+                case FULL_SIZE_ICON:
+                    boolean isFullSizeIcon = parser.getAttributeBooleanValue(i, false);
+                    workingTab.setFullSizeIcon(isFullSizeIcon);
                     break;
             }
         }
@@ -195,7 +200,8 @@ class TabParser {
             BADGE_BACKGROUND_COLOR,
             BADGE_HIDES_WHEN_ACTIVE,
             IS_TITLELESS,
-            NO_TINTING
+            NO_TINTING,
+            FULL_SIZE_ICON
     })
     @interface TabAttribute {
         String ID = "id";
@@ -208,6 +214,7 @@ class TabParser {
         String BADGE_HIDES_WHEN_ACTIVE = "badgeHidesWhenActive";
         String IS_TITLELESS = "iconOnly";
         String NO_TINTING = "noTinting";
+        String FULL_SIZE_ICON = "fullSizeIcon";
     }
 
     @SuppressWarnings("WeakerAccess")

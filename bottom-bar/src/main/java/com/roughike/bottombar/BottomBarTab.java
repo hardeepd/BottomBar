@@ -54,6 +54,7 @@ public class BottomBarTab extends LinearLayout {
     private Type type = Type.FIXED;
     private boolean isTitleless;
     private boolean noTinting;
+    private boolean isFullSizeIcon;
     private int iconResId;
     private String title;
     private float inActiveAlpha;
@@ -120,7 +121,11 @@ public class BottomBarTab extends LinearLayout {
         int layoutResource;
         switch (type) {
             case FIXED:
-                layoutResource = R.layout.bb_bottom_bar_item_fixed;
+                if (isFullSizeIcon) {
+                    layoutResource = R.layout.bb_bottom_bar_item_large;
+                } else {
+                    layoutResource = R.layout.bb_bottom_bar_item_fixed;
+                }
                 break;
             case SHIFTING:
                 layoutResource = R.layout.bb_bottom_bar_item_shifting;
@@ -186,6 +191,10 @@ public class BottomBarTab extends LinearLayout {
 
     public void setNoTinting(boolean noTinting) {
         this.noTinting = noTinting;
+    }
+
+    public void setFullSizeIcon(boolean isFullSizeIcon) {
+        this.isFullSizeIcon = isFullSizeIcon;
     }
 
     public ViewGroup getOuterView() {
